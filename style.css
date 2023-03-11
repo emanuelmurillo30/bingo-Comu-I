@@ -1,0 +1,52 @@
+#content{
+    margin: 5rem auto;
+}
+
+#bingotable {
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th{
+    border: 1px solid black;
+    background-color: #0F62AC;
+    color: white;
+    font-size: 1.25rem;
+    height: 3rem;
+}
+
+td{
+    border: 1px dotted black;
+    width: 20%;
+    cursor: pointer;
+}
+
+#free{
+    background-color: red;
+    cursor: auto;
+}
+
+.chant{
+    margin: 5rem auto;
+    text-align: center;
+}
+
+.selected{
+    color: white;
+    background-color: #1a293d;
+    font-style: italic;
+    border-radius: 50%;
+    border: none;
+}
+
+h3{
+    width: 50%;
+    padding: 2rem;
+    margin: auto;
+    text-align: left;
+    word-wrap: break-word;
+}

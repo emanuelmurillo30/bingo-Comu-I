@@ -1,0 +1,78 @@
+<html>
+
+<head>
+<meta charset="utf-8" />
+
+<title>Bingo</title>
+
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+
+</head>
+
+<body onload="newCard()">
+
+    <div id="header">
+      <h1>Bingo Game</h1>
+      <input type="text" name="Nombre" id="player" placeholder="INGRESE SU NOMBRE">
+      <button onclick="recibirNombre()">ACEPTAR</button>
+    </div>
+	<div id="content">
+		<table id="bingotable">
+			<tr>
+				<th class="orange">B</th>
+				<th class="orange">I</th>
+				<th class="orange">N</th>
+				<th class="orange">G</th>
+				<th class="orange">O</th>
+			</tr>
+			<tr>
+				<td id="box0"> &nbsp;</td>
+                <td id="box5"> &nbsp;</td>
+				<td id="box10"> &nbsp;</td>
+				<td id="box14"> &nbsp;</td>
+				<td id="box19"> &nbsp;</td>
+			</tr>
+			<tr>
+				<td id="box1""> &nbsp;</td>
+                <td id="box6""> &nbsp;</td>
+				<td id="box11"> &nbsp;</td>
+				<td id="box15"> &nbsp;</td>
+				<td id="box20"> &nbsp;</td>
+			</tr>
+			<tr>
+				<td id="box2"> &nbsp;</td>
+				<td id="box7"> &nbsp;</td>
+				<td id="free"> &nbsp;</td>
+				<td id="box16"> &nbsp;</td>
+				<td id="box21"> &nbsp;</td>
+			</tr>
+			<tr>
+				<td id="box3"> &nbsp;</td>
+                <td id="box8"> &nbsp;</td>
+				<td id="box12"> &nbsp;</td>
+				<td id="box17"> &nbsp;</td>
+				<td id="box22"> &nbsp;</td>
+			</tr>
+			<tr>
+				<td id="box4"> &nbsp;</td>
+				<td id="box9"> &nbsp;</td>
+				<td id="box13"> &nbsp;</td>
+				<td id="box18"> &nbsp;</td>
+				<td id="box23"> &nbsp;</td>
+			</tr>
+		</table>
+	</div>
+
+    <div class="chant">
+        <p><a href="#" onclick="callNumber()">CANTA NUEVO NUMERO</a></p>
+        <h1 id="newNumber"></h1>
+        <h3 id="called"></h3>
+    </div>
+	
+    
+
+</body>
+<script type="text/javascript" src="logic.js"></script>
+
+</html>
