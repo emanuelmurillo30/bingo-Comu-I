@@ -10,12 +10,15 @@
 
 </head>
 
-<body onload="newCard()">
+<body>
 
     <div id="header">
       <h1>Bingo Game</h1>
       <input type="text" name="Nombre" id="player" placeholder="INGRESE SU NOMBRE">
       <button onclick="recibirNombre()">ACEPTAR</button>
+	  <h3 id="modalidad-title">Elija la modalidad de juego</h3>
+	  <button id="lleno" onclick="newCard('full')">CARTON LLENO</button>
+	  <button id="linea" onclick="newCard('line')">LINEA LLENA</button>
     </div>
 	<div id="content">
 		<table id="bingotable">
@@ -65,6 +68,7 @@
 	</div>
 
     <div class="chant">
+		<h1 id="won"></h1>
         <h1 id="newNumber"></h1>
         <h3 id="called"></h3>
     </div>

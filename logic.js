@@ -2,8 +2,11 @@ let called = []
 let win = false;
 let filledCard = document.getElementsByTagName("TD")
 let card=[];
+let gameMode = "";
+let autoPlay=null;
 
-let newCard = ()=>{
+let newCard = (mode)=>{
+    gameMode = mode;
     let existingNums = [];
     for (let index = 0; index < 24; index++) {
         if (index >= 0 && index <=4) {
@@ -21,6 +24,10 @@ let newCard = ()=>{
             createNumber(existingNums, index, 61, 75)
         }
     }
+    document.getElementById("lleno").remove();
+    document.getElementById("linea").remove();
+    document.getElementById("modalidad-title").remove();
+    autoPlay = setInterval(callNumber, 500);
 }
 
 let createNumber = (array, pos, min, max)=>{
@@ -40,41 +47,39 @@ let createNumber = (array, pos, min, max)=>{
 }
 
 let checkBingoOnline = () => {
-    for (let i = 0; i < 5; i++) {
+
+    // Validation for columns
+    if((card[0].selected && card[1].selected && card[2].selected && card[3].selected && card[4].selected)==true){
+        return "c"
+    }
+    if((card[5].selected && card[6].selected && card[7].selected && card[8].selected && card[9].selected)==true){
+        return "c"
+    }
+    if((card[10].selected && card[11].selected && card[12].selected && card[13].selected)==true){
+        return "c"
+    }
+    if((card[14].selected && card[15].selected && card[16].selected && card[17].selected && card[18].selected)==true){
+        return "c"
+    }
+    if((card[19].selected && card[20].selected && card[21].selected && card[22].selected && card[23].selected)==true){
+        return "c"
+    }
         
-        // Validation for columns
-        if((card[i].selected && card[i+1].selected && card[i+2].selected && card[i+3].selected && card[i+4].selected)==true){
-            return "c"
-        }
-        if((card[i+5].selected && card[i+6].selected && card[i+7].selected && card[i+8].selected && card[i+9].selected)==true){
-            return "c"
-        }
-        if((card[i+10].selected && card[i+11].selected && card[i+12].selected && card[i+13].selected)==true){
-            return "c"
-        }
-        if((card[i+14].selected && card[i+15].selected && card[i+16].selected && card[i+17].selected && card[i+18].selected)==true){
-            return "c"
-        }
-        if((card[i+19].selected && card[i+20].selected && card[i+21].selected && card[i+22].selected && card[i+23].selected)==true){
-            return "c"
-        }
-        
-        //Validation for Rows
-        if((card[i].selected && card[i+5].selected && card[i+10].selected && card[i+14].selected && card[i+19].selected)==true){
-            return "f"
-        }
-        if((card[i+1].selected && card[i+6].selected && card[i+11].selected && card[i+15].selected && card[i+20].selected)==true){
-            return "f"
-        }
-        if((card[i+2].selected && card[i+7].selected && card[i+16].selected && card[i+21].selected)==true){
-            return "f"
-        }
-        if((card[i+3].selected && card[i+8].selected && card[i+12].selected && card[i+17].selected && card[i+22].selected)==true){
-            return "f"
-        }
-        if((card[i+4].selected && card[i+9].selected && card[i+13].selected && card[i+18].selected && card[i+23].selected)==true){
-            return "f"
-        }
+    //Validation for Rows
+    if((card[0].selected && card[5].selected && card[10].selected && card[14].selected && card[19].selected)==true){
+        return "f"
+    }
+    if((card[1].selected && card[6].selected && card[11].selected && card[15].selected && card[20].selected)==true){
+        return "f"
+    }
+    if((card[2].selected && card[7].selected && card[16].selected && card[21].selected)==true){
+        return "f"
+    }
+    if((card[3].selected && card[8].selected && card[12].selected && card[17].selected && card[22].selected)==true){
+        return "f"
+    }
+    if((card[4].selected && card[9].selected && card[13].selected && card[18].selected && card[23].selected)==true){
+        return "f"
     }
     
     
@@ -117,10 +122,18 @@ let callNumber = ()=>{
 
         } 
     })
-    if(checkBingoFull() || checkBingoOnline()){
+    if(gameMode == "line"){
+        if(checkBingoOnline() !== ""){
             clearInterval(autoPlay);
+            document.getElementById("won").innerHTML="HAS GANADO!"
+        }
+    }else{
+        if(checkBingoFull()){
+            clearInterval(autoPlay);
+            document.getElementById("won").innerHTML="HAS GANADO!"
+        }
     }
 }
 
-let autoPlay = setInterval(callNumber, 500);
+
 
