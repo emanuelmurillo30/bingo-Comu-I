@@ -9,6 +9,7 @@
     height: 50%;
     border-collapse: collapse;
     background: white;
+    visibility: hidden;
 }
 
 th{

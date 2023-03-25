@@ -5,6 +5,22 @@ let card=[];
 let gameMode = "";
 let autoPlay=null;
 
+let createNumber = (array, pos, min, max)=>{
+    do{
+        if(max != 15){
+            boxNum = Math.floor(Math.random()*(max-min))
+            boxNum = boxNum + min + 1
+        }else{
+            boxNum = Math.floor(Math.random()*14)+1
+        }
+    }while (array.includes(boxNum));
+    array.push(boxNum)
+    let cardPos = "box"+pos
+    let selected = false
+    card.push({cardPos, boxNum, selected})
+    document.getElementById(cardPos).innerHTML=boxNum
+}
+
 let newCard = (mode)=>{
     gameMode = mode;
     let existingNums = [];
@@ -24,27 +40,17 @@ let newCard = (mode)=>{
             createNumber(existingNums, index, 61, 75)
         }
     }
+    document.getElementById('bingotable').style.visibility="visible"
+    document.getElementById('bingotable').classList.add("visibleCard")
     document.getElementById("lleno").remove();
     document.getElementById("linea").remove();
     document.getElementById("modalidad-title").remove();
     autoPlay = setInterval(callNumber, 500);
+    return card
 }
 
-let createNumber = (array, pos, min, max)=>{
-    do{
-        if(max != 15){
-            boxNum = Math.floor(Math.random()*(max-min))
-            boxNum = boxNum + min + 1
-        }else{
-            boxNum = Math.floor(Math.random()*14)+1
-        }
-    }while (array.includes(boxNum));
-    array.push(boxNum)
-    let cardPos = "box"+pos
-    let selected = false
-    card.push({cardPos, boxNum, selected})
-    document.getElementById(cardPos).innerHTML=boxNum
-}
+let getCard = ()=> { return card } 
+
 
 let checkBingoOnline = () => {
 
